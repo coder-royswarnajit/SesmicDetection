@@ -1,0 +1,13 @@
+pandas
+numpy
+matplotlib
+scikit-learn
+joblib
+kagglehub
+obspy
+scipy
+
+obspy
+kagglehub
+pandas
+tensorflow
