@@ -6,8 +6,7 @@ joblib
 kagglehub
 obspy
 scipy
-
-obspy
-kagglehub
-pandas
 tensorflow
+streamlit
+plotly
+seaborn

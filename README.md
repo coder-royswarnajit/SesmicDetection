@@ -1,12 +1,28 @@
-# Seismic Detection (Mars & Moon)
+# 🌍 Seismic Detection (Mars & Moon)
 
-Unified Python toolkit for:
-- MiniSEED waveform browsing (Mars / Moon)
+## 🎯 **Professional Seismic Analysis Platform**
+
+A comprehensive Python toolkit for Mars and Moon seismic data analysis featuring:
+
+### **🚀 Professional Dashboard** *(Recommended)*
+- **Production-ready web interface** with complete workflows
+- **Interactive visualizations** and real-time analysis
+- **Professional export capabilities** for results and reports
+- **Instant demo mode** with synthetic seismic data
+
+**Quick Start:**
+```bash
+python launch_professional_dashboard.py
+```
+📖 **Complete Guide:** [DASHBOARD_GUIDE.md](DASHBOARD_GUIDE.md)
+
+### **🔧 Core Analysis Toolkit**
+- MiniSEED waveform processing (Mars & Moon)
 - CSV (lunar) waveform + feature extraction
-- STA/LTA triggering
+- STA/LTA event detection algorithms
 - Batch feature catalog export
-- Optional CNN prototype replaced by pure ObsPy (no TensorFlow dependency)
-- Dockerized runtime
+- Pure ObsPy implementation (no TensorFlow dependency)
+- Dockerized runtime environment
 - Automatic Kaggle dataset download via kagglehub
 
 ## Key Datasets (Kaggle)
@@ -22,20 +38,52 @@ import kagglehub
 path = kagglehub.dataset_download("ahmedsamir1598/space-apps-2024-seismic-detection")
 ```
 
-## Project Structure
+## 📁 Project Structure
 ```
 SesmicDetection/
-├── mars.py                # Mars MiniSEED processing & STA/LTA
-├── moon.py                # Moon MiniSEED processing (filtered lunar subset)
-├── planet_unified.py      # Unified Mars/Moon processor & batch features
-├── moon_cnn.py            # (Now STA/LTA heuristic for lunar CSVs)
-├── Dockerfile
-├── requirements.txt
-├── README.md
-└── (optional) outputs/
+├── 🌍 PROFESSIONAL DASHBOARD
+│   ├── professional_dashboard.py          # Main dashboard application
+│   ├── launch_professional_dashboard.py   # Dashboard launcher
+│   ├── test_professional_dashboard.py     # Test suite
+│   └── DASHBOARD_GUIDE.md                 # Complete user guide
+├── 🔧 CORE ANALYSIS MODULES
+│   ├── mars.py                            # Mars MiniSEED processing & STA/LTA
+│   ├── moon.py                            # Moon MiniSEED processing
+│   ├── planet_unified.py                  # Unified Mars/Moon processor
+│   ├── train_model.py                     # ML model training
+│   └── core/
+│       ├── processing.py                  # Signal processing utilities
+│       ├── ml_handler.py                  # ML model handling
+│       └── phase_picker.py                # Phase picking algorithms
+├── 📋 PROJECT FILES
+│   ├── requirements.txt                   # Python dependencies
+│   ├── Dockerfile                         # Container setup
+│   └── README.md                          # This overview
 ```
 
-## Features
+## 🎯 **Recommended: Professional Dashboard**
+
+The **Professional Seismic Detection Dashboard** provides a complete, production-ready interface for seismic analysis:
+
+### ✅ **Fully Functional Features**
+- **Interactive waveform visualization** with zoom/pan capabilities
+- **Real-time STA/LTA detection** with parameter tuning
+- **Comprehensive statistical analysis** with professional metrics
+- **High-quality export capabilities** (CSV, plots, reports)
+- **Instant demo mode** with synthetic seismic data
+- **Professional presentation** suitable for stakeholders
+
+### 🚀 **Quick Start**
+```bash
+python launch_professional_dashboard.py
+```
+**Dashboard URL:** `http://localhost:8502`
+
+📖 **Complete Guide:** [DASHBOARD_GUIDE.md](DASHBOARD_GUIDE.md)
+
+---
+
+## 🔧 **Core Toolkit Features**
 - List & plot MiniSEED traces
 - Absolute arrival → relative marking
 - Bandpass filtering

@@ -361,8 +361,9 @@ def main():
             events = detect_events_with_ml(tr_for_ml, model_path=args.model_path)
             if events:
                 print(f"ML detected {len(events)} event window(s):")
-                for (s, e) in events:
-                    print(f"  - {s.isoformat()} -> {e.isoformat()}")
+                for (s, e, idx, label, prob) in events:
+                    prob_txt = f" p={prob:.3f}" if prob is not None else ""
+                    print(f"  - {label} (class {idx}) {s.isoformat()} -> {e.isoformat()}{prob_txt}")
             else:
                 print("ML detected no events.")
         except Exception as e:  # noqa: BLE001
