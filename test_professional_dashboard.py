@@ -56,7 +56,19 @@ def test_seismic_analyzer():
         
         assert len(filtered) == len(signal), "Filtered signal must have same length"
         
-        print(f"✅ Bandpass filtering: Energy reduction = {(1 - np.sum(filtered**2)/np.sum(signal**2))*100:.1f}%")
+        # Ensure arrays are properly typed for energy calculation
+        filtered_array = np.array(filtered)
+        signal_array = np.array(signal)
+
+        # Calculate energy reduction safely
+        original_energy = np.sum(signal_array**2)
+        filtered_energy = np.sum(filtered_array**2)
+
+        if original_energy > 0:
+            energy_reduction = (1 - filtered_energy/original_energy) * 100
+            print(f"✅ Bandpass filtering: Energy reduction = {energy_reduction:.1f}%")
+        else:
+            print("✅ Bandpass filtering: Original signal has zero energy")
         
         return True
         
@@ -72,7 +84,7 @@ def test_data_processing_pipeline():
         from professional_dashboard import SeismicAnalyzer
         
         # Generate test data
-        t, signal, events, sr = SeismicAnalyzer.generate_synthetic_trace(duration=3600, num_events=3)
+        t, signal, _, sr = SeismicAnalyzer.generate_synthetic_trace(duration=3600, num_events=3)
         
         # Simulate complete workflow
         print("   Step 1: Data generation ✅")
@@ -131,7 +143,7 @@ def test_data_processing_pipeline():
             f"- Noise Reduction: {(1 - filtered_stats['std']/original_stats['std'])*100:.1f}%"
         ]
         
-        report = "\n".join(report_lines)
+        _ = "\n".join(report_lines)  # Report content generated
         print("   Step 7: Report generation ✅")
         
         print(f"✅ Complete pipeline test successful!")
@@ -154,7 +166,7 @@ def test_visualization_data():
         from professional_dashboard import SeismicAnalyzer
         
         # Generate test data
-        t, signal, events, sr = SeismicAnalyzer.generate_synthetic_trace(duration=1800, num_events=2)
+        t, signal, _, sr = SeismicAnalyzer.generate_synthetic_trace(duration=1800, num_events=2)
         
         # Test time series data
         assert len(t) == len(signal), "Time and signal arrays must match"
@@ -211,7 +223,7 @@ def test_export_functionality():
         from professional_dashboard import SeismicAnalyzer
         
         # Generate test data and analysis
-        t, signal, events, sr = SeismicAnalyzer.generate_synthetic_trace()
+        t, signal, _, sr = SeismicAnalyzer.generate_synthetic_trace()
         cft = SeismicAnalyzer.compute_sta_lta(signal, sr)
         triggers = SeismicAnalyzer.detect_triggers(cft)
         stats = SeismicAnalyzer.compute_statistics(signal)
